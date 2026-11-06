@@ -46,8 +46,6 @@ For 4.30.x and earlier, add `OMSDK_Voodooio` too:
 
 When you upgrade to 4.31.0 or later, remove `OMSDK_Voodooio`: that product no longer exists.
 
-Using AppLovin MAX mediation? Also add the [VoodooMaxAdapter](https://github.com/VoodooADN/ios-applovin-adapter-swiftpackage) package, pinned to the same version as this one.
-
 ## Initialization of SDK
 
 ### Initialize
