@@ -12,9 +12,16 @@ Available with two apis:
 
 Pick a version from the [Releases](https://github.com/VoodooADN/ios-sdk-swiftpackage/releases) page and pin it.
 
-In Xcode: **File > Add Package Dependencies…**, enter `https://github.com/VoodooADN/ios-sdk-swiftpackage.git`, set the dependency rule to **Exact Version**, and add the `VoodooAdn` product to your app target.
+In Xcode: **File > Add Package Dependencies…**, enter `https://github.com/VoodooADN/ios-sdk-swiftpackage.git`, set the dependency rule to **Exact Version**, and add the products listed below to your app target.
 
-In a `Package.swift`:
+Which products to add depends on the version:
+
+| Version | Products |
+|---|---|
+| 4.31.0 and later | `VoodooAdn` only. It brings everything the SDK needs, Open Measurement included. |
+| 4.30.x and earlier | `VoodooAdn` **and** `OMSDK_Voodooio`. Without `OMSDK_Voodooio`, the app crashes at launch. |
+
+In a `Package.swift`, for 4.31.0 and later:
 
 ```swift
 dependencies: [
@@ -30,7 +37,14 @@ targets: [
 ]
 ```
 
-From 4.31.0, `VoodooAdn` is the only product: it brings everything the SDK needs, Open Measurement included. Up to 4.30.x, also add the `OMSDK_Voodooio` product, and remove it when you upgrade to 4.31.0 or later.
+For 4.30.x and earlier, add `OMSDK_Voodooio` too:
+
+```swift
+.product(name: "VoodooAdn", package: "ios-sdk-swiftpackage"),
+.product(name: "OMSDK_Voodooio", package: "ios-sdk-swiftpackage")
+```
+
+When you upgrade to 4.31.0 or later, remove `OMSDK_Voodooio`: that product no longer exists.
 
 Using AppLovin MAX mediation? Also add the [VoodooMaxAdapter](https://github.com/VoodooADN/ios-applovin-adapter-swiftpackage) package, pinned to the same version as this one.
 
