@@ -38,6 +38,6 @@ jobs:
             *) LATEST=false ;;
           esac
           gh release create "$TAG" --verify-tag --latest="$LATEST" \
-            --title "Voodoo Adn ${VERSION}" \
+            --title "${VERSION}" \
             --notes "Voodoo Adn SDK ${VERSION}."
           echo "✅ Release ${TAG} created (latest: ${LATEST})"
