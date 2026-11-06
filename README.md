@@ -6,6 +6,34 @@ Available with two apis:
 - Completion handlers/closures
 - Await/async
 
+## Installation
+
+### Swift Package Manager
+
+Pick a version from the [Releases](https://github.com/VoodooADN/ios-sdk-swiftpackage/releases) page and pin it.
+
+In Xcode: **File > Add Package Dependencies…**, enter `https://github.com/VoodooADN/ios-sdk-swiftpackage.git`, set the dependency rule to **Exact Version**, and add the `VoodooAdn` product to your app target.
+
+In a `Package.swift`:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/VoodooADN/ios-sdk-swiftpackage.git", exact: "<version>")
+],
+targets: [
+    .target(
+        name: "YourTarget",
+        dependencies: [
+            .product(name: "VoodooAdn", package: "ios-sdk-swiftpackage")
+        ]
+    )
+]
+```
+
+From 4.31.0, `VoodooAdn` is the only product: it brings everything the SDK needs, Open Measurement included. Up to 4.30.x, also add the `OMSDK_Voodooio` product, and remove it when you upgrade to 4.31.0 or later.
+
+Using AppLovin MAX mediation? Also add the [VoodooMaxAdapter](https://github.com/VoodooADN/ios-applovin-adapter-swiftpackage) package, pinned to the same version as this one.
+
 ## Initialization of SDK
 
 ### Initialize
